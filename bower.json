@@ -6,8 +6,7 @@
     "bz-slider.css"
   ],
   "ignore": [
-    "examples",
-    "src"
+    "examples"
   ],
   "dependencies": {
     "angular": ">=1.2.0-rc.2",

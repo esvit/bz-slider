@@ -15,12 +15,6 @@ module.exports = (grunt) ->
                     './.temp/views'
                     './.temp/'
                 ]
-        copy:
-            styles:
-                files: [
-                    src: './src/styles/bz-slider.less'
-                    dest: './bz-slider.less'
-                ]
                 
         uglify:
             # concat js files before minification
@@ -40,7 +34,7 @@ module.exports = (grunt) ->
         less:
             css:
                 files:
-                    'bz-slider.css': 'src/styles/bz-slider.less'
+                    'bz-slider.css': 'src/styles/00-bz-slider.less'
 
         cssmin:
             css:
@@ -78,7 +72,6 @@ module.exports = (grunt) ->
         #'ngTemplateCache'
         'concat'
         'less'
-        'copy'
     ]
     grunt.registerTask 'default', [
         'dev'

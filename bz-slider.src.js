@@ -8,44 +8,35 @@
     }
 }(angular || null, function(angular) {
 var app = angular.module('bzSlider', []);
+var bzSliderController = ['$scope', '$timeout', '$parse', function ($scope, $timeout, $parse) {
+    $scope.$slides = $scope.$slides || [];
+
+    $scope.next = function() {
+        var total = $scope.$slides.length;
+        if (total > 0) {
+            $scope.$slideIndex = ($scope.$slideIndex == total - 1) ? 0 : $scope.$slideIndex + 1;
+        }
+        $timeout($scope.next, 2000);
+    }
+    $scope.next();
+
+    $scope.setIndex = function(index) {
+        $scope.$slideIndex = index;
+    }
+}];
 app.directive('bzSlider', ['$timeout', '$parse', function ($timeout, $parse) {
     return {
         restrict: 'AC',
         replace: false,
         scope: true,
-        controller: function() {
-        },
+        controller: bzSliderController,
         link: function(scope, element, attrs) {
             element.addClass('bz-slider');
-            var slides = [];
             scope.$slideIndex = 0;
             // watch for slides update
             scope.$watch(attrs.bzSlider, function(value) {
-                slides = element.children();
+                scope.$slides = element.children();
             });
-            scope.next = function() {
-                var total = slides.length;
-                if (total > 0) {
-                    scope.$slideIndex = (scope.$slideIndex == total - 1) ? 0 : scope.$slideIndex + 1;
-                }
-                $timeout(function() { scope.next() }, 2000);
-            }
-            scope.next();
-
-            scope.setIndex = function(index) {
-                scope.$slideIndex = index;
-            }
-        }
-    };
-}]);
-app.directive('bzSlide', ['$timeout', '$parse', function ($timeout, $parse) {
-    return {
-        restrict: 'AC',
-        replace: false,
-        scope: false,
-        require: '^bzSlider',
-        link: function(scope, element, attrs) {
-        
         }
     };
 }]);
