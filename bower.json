@@ -1,0 +1,20 @@
+{
+  "name": "bz-slider",
+  "version": "0.1.0",
+  "main": [
+    "bz-slider.js",
+    "bz-slider.css"
+  ],
+  "ignore": [
+    "examples",
+    "src"
+  ],
+  "dependencies": {
+    "angular": ">=1.2.0-rc.2",
+    "jquery": ">=1.10.2",
+    "animate.css": "~2.1.0"
+  },
+  "devDependencies": {
+    "angular-mocks": "1.2.0-rc.2"
+  }
+}
