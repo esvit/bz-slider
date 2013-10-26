@@ -1,9 +1,15 @@
-.bz-fade {
+.animation-fade {
+    &, &.ng-hide-remove {
+        z-index: 1;
+    }
+    &.ng-hide-add {
+        z-index: 0;
+    }
     &.ng-hide-add, &.ng-hide-remove {
-        -webkit-transition: 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) all;
-        -moz-transition: 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) all;
-        -o-transition: 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) all;
-        transition: 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) all;
+        -webkit-transition: 1s linear all;
+        -moz-transition: 1s linear all;
+        -o-transition: 1s linear all;
+        transition: 1s linear all;
         display: block !important;
     }
     &.ng-hide-add, &.ng-hide-remove.ng-hide-remove-active {
@@ -11,6 +17,10 @@
     }
     &.ng-hide-add.ng-hide-add-active, &.ng-hide-remove {
         opacity: 0;
+        position: absolute;
+    }
+    &.ng-hide-add.ng-hide-add-active {
+        z-index: 0;
         position: absolute;
     }
 }

@@ -15,26 +15,56 @@
         <script src="js/angular-animate.js"></script>
         <script src="../bz-slider.src.js"></script>
         <link rel="stylesheet" href="../bz-slider.css">
+
+        <style>
+            .bz-slider {
+                width: 300px;
+                height: 300px;
+                overflow: hidden;
+                background-color: black;
+                border: 1px solid black;
+            }
+            .bz-slide {
+                width: 300px;
+                height: 300px;
+            }
+            .controls {
+                position: absolute;
+                bottom: 0;
+                z-index: 2;
+            }
+        </style>
     </head>
 <body ng-app="main">
-<h1>Table with pagination</h1>
+<h1>Slider example</h1>
 
 <div ng-controller="DemoCtrl">
 
 
-        <div bz-slider="slides">
-            <div ng-repeat="(i, slide) in slides" ng-show="i == $slideIndex" ng-class="slide.class">
-                {{slide.title}}
+        <div bz-slider delay="delay" autoplay="true">
+            <div class="bz-slide" ng-repeat="(i, slide) in slides" ng-show="i == $slideIndex" ng-class="slide.class">
+                <img ng-src="{{ slide.image }}" />
+            </div>
+
+            <div class="controls">
+                <button ng-click="prev()" class="btn btn-primary">Prev</button>
+
+                <button ng-click="play()" ng-if="!$play" class="btn btn-primary">Play</button>
+                <button ng-click="stop()" ng-if="$play" class="btn btn-primary">Stop</button>
+
+                <button ng-click="next()" class="btn btn-primary">next</button>
             </div>
         </div>
+
+    <button ng-click="delay = 1000"></button>
 
         <script>
         var app = angular.module('main', ['ngAnimate', 'bzSlider']).
         controller('DemoCtrl', function($scope) {
-        
+            $scope.delay = 2000;
             $scope.slides = [
-                {'title': 'hell', 'class': 'bz-slide'},
-                {'title': 'sadas', 'class': 'bz-fade'}
+                {'title': 'hell', 'class': 'animation-slide', 'image': 'images/image1.png'},
+                {'title': 'sadas', 'class': 'animation-fade', 'image': 'images/image2.png'}
             ];
         
         })
