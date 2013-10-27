@@ -5,5 +5,5 @@ Code licensed under New BSD License.
 
 ## Installing via Bower
 ```
-bower install ng-table
+bower install bz-slider
 ```
