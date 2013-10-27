@@ -1,1 +1,1 @@
-var app = angular.module('bzSlider', []);
+var app = angular.module('bzSlider', ['ngAnimate']);
